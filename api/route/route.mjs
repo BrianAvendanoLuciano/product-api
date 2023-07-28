@@ -9,5 +9,8 @@ const authController = new AuthController();
 router.post('/auth', (req, res) => {
     return authController.generateAccess(req, res);
 })
+router.post('/jwt', (req, res) => {
+    return authController.verifyAccess(req, res);
+})
 
 export default router;
