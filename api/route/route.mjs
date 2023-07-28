@@ -1,9 +1,13 @@
 import express from 'express';
 
+import AuthController from '../controller/auth-controller.mjs';
+
 const router = express.Router();
 
+
+const authController = new AuthController();
 router.post('/auth', (req, res) => {
-    return res.status(200).json({hmac: 'hmac'});
+    return authController.generateAccess(req, res);
 })
 
 export default router;
