@@ -1,7 +1,18 @@
 import jwt from 'jsonwebtoken';
 import response from '../library/response.mjs';
 
+/**
+ * class VerifyJwt
+ * verifies the jwt
+ */
 export default class VerifyJwt {
+    /**
+     * 
+     * @param {express req} req 
+     * @param {express res} res 
+     * @param {express next} next 
+     * @returns json | continue code
+     */
     static verifyJwtToken(req, res, next) {
         const token = req.headers['x-access-token'];
 
