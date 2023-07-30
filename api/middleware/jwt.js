@@ -3,6 +3,7 @@ import response from '../library/response.mjs';
 
 /**
  * class VerifyJwt
+ * @author Brian
  * verifies the jwt
  */
 export default class VerifyJwt {

@@ -1,5 +1,6 @@
 /**
  * class Response
+ * @author Brian
  * response helper
  */
 export default class Response {

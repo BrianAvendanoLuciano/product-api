@@ -3,6 +3,7 @@ import response from "../library/response.mjs";
 
 /**
  * class AuthController
+ * @author Brian
  * responsible for calling the business
  * logic for authenticating user.
  */
