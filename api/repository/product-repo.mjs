@@ -10,4 +10,10 @@ export default class ProductRepo {
     async searchProduct(query, field, filter) {
         return await this.#model.find(query, field, filter).exec();
     }
+
+    async createProduct(product) {
+        const newProduct = new this.#model(product);
+
+       return await  newProduct.insertMany(product);
+    }
 }

@@ -14,6 +14,8 @@ export default class ProductService {
     }
 
     async searchProduct(query) {
+        let products = [];
+
         const searchQuery = this.#searchHelper
         .setFeedId(query.feed_id)
         .setProductName(query.product_name)
@@ -31,6 +33,34 @@ export default class ProductService {
         .setOffset(query.offset)
         .build();
 
-        return await this.#productRepo.searchProduct(searchQuery, searchField, searchFilter)
+        try {
+            products = await this.#productRepo.searchProduct(searchQuery, searchField, searchFilter);
+            
+            return {
+                success: true,
+                products: products
+            }
+        } catch (err) {
+            return {
+                success: false,
+                message: err.message
+            }
+        }
+    }
+
+    async createProduct(products) {
+        try {
+            products = await this.#productRepo.createProduct(products);
+            
+            return {
+                success: true,
+                message: 'new product(s) added'
+            }
+        } catch (err) {
+            return {
+                success: false,
+                message: err.message
+            }
+        }
     }
 }
