@@ -11,9 +11,20 @@ export default class ProductRepo {
         return await this.#model.find(query, field, filter).exec();
     }
 
-    async createProduct(product) {
-        const newProduct = new this.#model(product);
+    async createProduct(products) {
+       return await this.#model.insertMany(products);
+    }
 
-       return await  newProduct.insertMany(product);
+    async updateProduct(ids, products) {
+        return await this.#model.updateMany(ids, products);
+        // User.updateMany({age:{$gte:5}}, 
+        //     {name:"ABCD"}, function (err, docs) {
+        //     if (err){
+        //         console.log(err)
+        //     }
+        //     else{
+        //         console.log("Updated Docs : ", docs);
+        //     }
+        // });
     }
 }

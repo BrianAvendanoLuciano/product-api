@@ -8,6 +8,10 @@ export default class ProductModel {
                 type: String,
                 required: true
             },
+            product_no: {
+                type: Number,
+                required: true
+            },
             product_name: {
                 type: String,
                 required: true
@@ -17,6 +21,10 @@ export default class ProductModel {
                 required: true
             },
             price: {
+                type: Number,
+                required: true
+            },
+            status: {
                 type: String,
                 required: true
             },

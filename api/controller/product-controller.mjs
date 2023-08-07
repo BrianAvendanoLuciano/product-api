@@ -26,14 +26,14 @@ export default class ProductController {
         const products = await this.#service.searchProduct(req.query);
 
         if (!products.success) {
-            response.error(res, 'db_error',
+            return response.error(res, 'db_error',
                 { message: products.message }
             );
         }
 
         return response.success(res, {
             result: 'success',
-            products
+            products: products.products
         });
     }
 
@@ -44,10 +44,10 @@ export default class ProductController {
      * @returns json
      */
     async put(req, res) {
-        const products = await this.#service.searchProduct(req.query);
+        const products = await this.#service.createProduct(req.body.products);
 
         if (!products.success) {
-            response.error(res, 'db_error',
+            return response.error(res, 'db_error',
                 { message: products.message }
             );
         }

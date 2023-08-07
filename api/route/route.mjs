@@ -41,4 +41,8 @@ router.get(`${apiRoute}/products`, VerifyJwt.verifyJwtToken, async (req, res) =>
     return await productController.get(req, res);
 })
 
+router.put(`${apiRoute}/products`, VerifyJwt.verifyJwtToken, async (req, res) => {
+    return await productController.put(req, res);
+})
+
 export default router;

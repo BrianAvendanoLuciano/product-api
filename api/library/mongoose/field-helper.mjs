@@ -3,5 +3,5 @@ export default function field(field) {
         return field.split(',').join(' ');
     }
 
-    return '*';
+    return {};
 }

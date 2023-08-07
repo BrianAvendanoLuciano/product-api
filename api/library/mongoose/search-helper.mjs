@@ -61,7 +61,7 @@ export default class SearchHelper {
      */
     setStatus(status) {
         if (status) {
-            this.#query.status = status;
+            this.#query.status = { $in: status.split(",")};
         }
         return this;
     }
@@ -73,7 +73,7 @@ export default class SearchHelper {
      */
     setFrom(from) {
         if (from) {
-            this.#query.createdAt.$gte = from;
+            this.#query.createdAt = { $gte: from };
         }
         return this;
     }
@@ -85,7 +85,7 @@ export default class SearchHelper {
     */
    setTo(to) {
         if (to) {
-            this.#query.createdAt.$lte = to;
+            this.#query.createdAt = { $lte: to };
         }
         return this;
     }
