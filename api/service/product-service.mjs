@@ -1,5 +1,5 @@
 import ProductRepo from "../repository/product-repo.mjs";
-import SearchHelper from "../library/mongoose/search-helper.mjs";
+import ProudctSearchHelper from "../library/mongoose/search-helper/product-search-helper.mjs";
 import FilterHelper from "../library/mongoose/filter-helper.mjs";
 import field from "../library/mongoose/field-helper.mjs";
 
@@ -25,13 +25,14 @@ export default class ProductService {
      */
     async searchProduct(query) {
         let products = [];
-        const searchHelper = new SearchHelper();
+        const searchHelper = new ProudctSearchHelper();
         const filterHelper = new FilterHelper();
 
         // set query
         const searchQuery = searchHelper
         .setFeedId(query.feed_id)
         .setProductName(query.product_name)
+        .setProductNo(query.product_no)
         .setCategory(query.category)
         .setDetail(query.detail)
         .setStatus(query.status)
@@ -49,7 +50,7 @@ export default class ProductService {
         .build();
 
         try {
-            products = await this.#productRepo.searchProduct(searchQuery, searchField, searchFilter);
+            products = await this.#productRepo.search(searchQuery, searchField, searchFilter);
             
             return {
                 success: true,
@@ -70,7 +71,7 @@ export default class ProductService {
      */
     async createProduct(products) {
         try {
-            products = await this.#productRepo.createProduct(products);
+            products = await this.#productRepo.create(products);
             
             return {
                 success: true,
