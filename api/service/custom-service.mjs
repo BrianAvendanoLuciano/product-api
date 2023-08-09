@@ -30,7 +30,6 @@ export default class CustomService {
 
         // set query
         const searchQuery = searchHelper
-        .setFeedId(query.feed_id)
         .setProductNo(query.product_no)
         .setRepCategoryNo(query.rep_category_no)
         .setGoogleCategoryNo(query.google_category_no)

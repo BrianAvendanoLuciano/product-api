@@ -7,7 +7,7 @@ import field from "../library/mongoose/field-helper.mjs";
  * status business logic
  * @author Brian
  */
-export default class StatuService {
+export default class StatusService {
     // status repository
     #statusRepo;
     
@@ -23,7 +23,7 @@ export default class StatuService {
      * @param {object} query 
      * @returns object
      */
-    async searchstatus(query) {
+    async searchStatus(query) {
         let status = [];
         const searchHelper = new StatusSearchHelper();
         const filterHelper = new FilterHelper();
