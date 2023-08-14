@@ -59,4 +59,25 @@ export default class StatusService {
             }
         }
     }
+
+    /**
+     * creates new status
+     * @param {Array<object>} status 
+     * @returns object
+     */
+    async createStatus(status) {
+        try {
+            status = await this.#statusRepo.create(status);
+            
+            return {
+                success: true,
+                message: 'new status added'
+            }
+        } catch (err) {
+            return {
+                success: false,
+                message: err.message
+            }
+        }
+    }
 }

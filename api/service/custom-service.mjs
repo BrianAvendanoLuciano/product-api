@@ -63,4 +63,25 @@ export default class CustomService {
             }
         }
     }
+
+        /**
+     * creates new custom
+     * @param {Array<object>} custom 
+     * @returns object
+     */
+    async createCustom(custom) {
+        try {
+            custom = await this.#customRepo.create(custom);
+            
+            return {
+                success: true,
+                message: 'new custom added'
+            }
+        } catch (err) {
+            return {
+                success: false,
+                message: err.message
+            }
+        }
+    }
 }
